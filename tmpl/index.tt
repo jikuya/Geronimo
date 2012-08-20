@@ -1,0 +1,27 @@
+[% WRAPPER 'include/layout.tt' %]
+
+<section>
+
+こんにちは [% name %] さん
+<section>
+
+<div>
+    <a href="/register_friend">あなたの尊敬する友達の名前を登録して下さい</a>
+</div>
+
+<br><br>
+
+[% IF respects %]
+<div>
+    <p>あなたの尊敬する人は以下の人々です。</p>
+    [% FOR v IN respects %]
+        <span><img src="http://graph.facebook.com/[% v.to_id %]/picture">[% v.to_name %]</span>
+    [% END %]
+</div>
+[% END %]
+
+</section>
+
+</section>
+
+[% END %]

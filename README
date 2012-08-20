@@ -1,0 +1,266 @@
+##########################################################
+# Mac 環境構築
+##########################################################
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ perlbrewインストール
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ curl -LO http://xrl.us/perlbrew
+$ perl perlbrew install
+$ rm perlbrew
+$ ~/perl5/perlbrew/bin/perlbrew init
+$ echo 'source ~/perl5/perlbrew/etc/bashrc' >> ~/.bashrc
+$ source ~/.bashrc
+$ which perlbrew
+$ perlbrew install-patchperl
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ perl-5.16.1インストール
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ perlbrew available
+$ perlbrew install perl-5.16.1
+$ perlbrew switch perl-5.16.1
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ cpanmインストール
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ perlbrew install-cpanm
+$ cpanm App::pmuninstall
+$ cpanm App::cpanoutdated
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ cartonインストール
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ cpanm Carton
+$ cpanm Module::Install
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ MySQLインストール
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+※http://dev.mysql.com/downloads/mysql/　からMySQLをダウンロード。
+　メアドを登録しないといけない。
+※ダウンロードして展開し、以下をすべてインストール
+  #インストーラー
+「mysql-5.5.XX-osx10.6-x86_64.pkg」
+「MySQLStartupItem.pkg」
+  #環境設定ファイル
+「MySQL.prefPane」
+
+// ----------------------------------------------
+// Pathを環境変数に設定
+// ----------------------------------------------
+$ echo 'export PATH="/usr/local/mysql/bin/:$PATH"' >> ~/.bashrc
+$ echo 'export DYLD_LIBRARY_PATH="/usr/local/mysql/lib"' >> ~/.bashrc
+$ source ~/.bashrc
+
+// ----------------------------------------------
+// パスワード設定
+// ----------------------------------------------
+※ システム環境設定からMySQLを起動
+$ mysqladmin -u root password 'root'
+$ mysql -u root -p #パスワードを入力してMySQLにログイン
+$ mysql> exit
+
+// ----------------------------------------------
+// utf8対応
+// ----------------------------------------------
+$ cp /etc/my.cnf /etc/my.cnf.org
+$ sudo cp /usr/local/mysql/support-files/my-medium.cnf /etc/my.cnf
+$ sudo vi /etc/my.cnf
+
+[client]
+default-character-set = utf8
+
+[mysqld]
+default-character-set = utf8
+
+[mysqldump]
+default-character-set = utf8
+
+[mysql]
+default-character-set = utf8
+
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Terrymanインストール
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ mkdir -p ~/perl5/app
+$ cd ~/perl5/app
+$ git clone https://github.com/jikuya/Terryman.git
+$ cd Terryman
+$ carton install
+  ※入らないモジュールがある場合は、そのモジュールを一端、cpanmでインストールする
+  ※例）cpanm モジュール名
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Terrymanアプリ起動
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ carton exec -- plackup app.psgi
+
+##########################################################
+# さくらVPS 環境構築
+##########################################################
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ perlbrewインストール
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ curl -LO http://xrl.us/perlbrew
+$ perl perlbrew install
+$ rm perlbrew
+$ ~/perl5/perlbrew/bin/perlbrew init
+$ echo 'source ~/perl5/perlbrew/etc/bashrc' >> ~/.bashrc
+$ source ~/.bashrc
+$ which perlbrew
+$ perlbrew install-patchperl
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ perl-5.16.1インストール
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ perlbrew available
+$ perlbrew install perl-5.16.1
+$ perlbrew switch perl-5.16.1
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ cpanmインストール
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ perlbrew install-cpanm
+$ cpanm App::pmuninstall
+$ cpanm App::cpanoutdated
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ cartonインストール
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ cpanm Carton
+$ cpanm Module::Install
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ MySQLインストール
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+// ----------------------------------------------
+// cmakeインストール
+// ----------------------------------------------
+$ cd ~
+$ wget http://www.cmake.org/files/v2.8/cmake-2.8.4.tar.gz
+$ tar xvzf cmake-2.8.4.tar.gz
+$ rm cmake-2.8.4.tar.gz 
+$ cd cmake-2.8.4
+$ ./configure
+$ gmake
+$ sudo gmake install
+
+// ----------------------------------------------
+// MySQL専用ユーザ作成
+// ----------------------------------------------
+$ sudo su -
+# useradd -s /sbin/nologin mysql
+# exit
+
+// ----------------------------------------------
+// MySQLインストール
+// ----------------------------------------------
+$ sudo yum install -y ncurses-devel
+$ wget http://dev.mysql.com/get/Downloads/MySQL-5.5/mysql-5.5.27.tar.gz/from/http://ftp.iij.ad.jp/pub/db/mysql/
+$ tar xvzf mysql-5.5.27.tar.gz 
+$ rm mysql-5.5.27.tar.gz
+$ cd mysql-5.5.27
+$ cmake . -DCMAKE_INSTALL_PREFIX=/usr/local/mysql -DDEFAULT_CHARSET=utf8 -DDEFAULT_COLLATION=utf8_general_ci
+$ make
+$ sudo make install
+
+// ----------------------------------------------
+// DBの初期化
+// ----------------------------------------------
+$ sudo su -
+# cd /usr/local/mysql
+# chown -R mysql .
+# chgrp -R mysql .
+# scripts/mysql_install_db --user=mysql
+# chown -R root .
+# chown -R mysql data
+
+// ----------------------------------------------
+// my.cnf の設定。utf8 の設定を追加。
+// ----------------------------------------------
+# mv /etc/my.cnf /etc/my.cnf.org
+# cp /usr/local/mysql/share/mysql/my-medium.cnf /etc/my.cnf
+# vi /etc/my.cnf
+[client]
+default-character-set=utf8
+
+[mysqld]
+skip-character-set-client-handshake
+character-set-server=utf8
+
+[mysqldump]
+default-character-set=utf8
+
+// ----------------------------------------------
+// 自動起動設定ファイルを設置
+// ----------------------------------------------
+# cp /usr/local/mysql/support-files/mysql.server /etc/rc.d/init.d/mysqld
+# vi /etc/rc.d/init.d/mysqld
+basedir=/usr/local/mysql
+datadir=/usr/local/mysql/data
+
+mysqld_pid_file_path=$datadir/`/bin/hostname`.pid
+
+// ----------------------------------------------
+// 自動起動設定後、MySQL起動
+// ----------------------------------------------
+# chkconfig --add mysqld
+# chkconfig mysqld on
+# chkconfig --list | grep mysqld
+mysqld 0:off 1:off 2:on 3:on 4:on 5:on 6:off
+# service mysqld start
+
+// ----------------------------------------------
+// root でログインして root 以外のユーザ削除、root のパスワード設定をしておく
+// ----------------------------------------------
+$ /usr/local/mysql/bin/mysql -u root
+mysql> use mysql;
+mysql> delete from user where !(host="localhost" and user="root"); # root 以外のユーザを削除
+mysql> update user set password=password('hogehoge');              # パスワード（hogehoge）を設定
+mysql> FLUSH PRIVILEGES;
+mysql> exit
+
+// ----------------------------------------------
+# 設定したパスワードで入れるか確認
+// ----------------------------------------------
+$ /usr/local/mysql/bin/mysql -u root -p
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Sqlite3インストール（開発時はsqliteをDBにする）
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ sudo yum -y install sqlite
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Terrymanインストール
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ sudo yum -y install openssl-devel
+
+$ mkdir -p ~/perl5/app
+$ cd ~/perl5/app
+$ git clone https://github.com/jikuya/Terryman.git
+$ cd Terryman
+$ carton install
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Terrymanアプリ起動
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ carton exec -- plackup app.psgi
+
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
++ Git push設定
++++++++++++++++++++++++++++++++++++++++++++++++++++++++
+$ git add .
+$ git commit .
+$ git commit --amend --author='jikuya <jikuya@gmail.com>'
+$ vi ~/.ssh/config
+Host github.com
+User git
+Port 22
+IdentityFile ~/.ssh/id_rsa
+$ ssh-keygen
+$ cat ~/.ssh/id_rsa.pub 
+※中身をGithubに登録する
+$ git push origin master
