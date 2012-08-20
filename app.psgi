@@ -6,17 +6,17 @@ use lib File::Spec->catdir(dirname(__FILE__), 'extlib', 'lib', 'perl5');
 use lib File::Spec->catdir(dirname(__FILE__), 'lib');
 use Plack::Builder;
 
-use Terryman::Web;
-use Terryman;
+use Geronimo::Web;
+use Geronimo;
 use Plack::Session::Store::DBI;
 use Plack::Session::State::Cookie;
 use DBI;
 
 {
-    my $c = Terryman->new();
+    my $c = Geronimo->new();
     $c->setup_schema();
 }
-my $db_config = Terryman->config->{DBI} || die "Missing configuration for DBI";
+my $db_config = Geronimo->config->{DBI} || die "Missing configuration for DBI";
 builder {
     enable 'Plack::Middleware::Static',
         path => qr{^(?:/static/)},
@@ -35,5 +35,5 @@ builder {
         state => Plack::Session::State::Cookie->new(
             httponly => 1,
         );
-    Terryman::Web->to_app();
+    Geronimo::Web->to_app();
 };

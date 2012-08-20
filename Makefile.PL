@@ -1,12 +1,14 @@
 use ExtUtils::MakeMaker;
 
 WriteMakefile(
-    NAME          => 'Terryman',
-    AUTHOR        => 'Some Person <person@example.com>',
-    VERSION_FROM  => 'lib/Terryman.pm',
+    NAME          => 'Geronimo',
+    AUTHOR        => 'jikuya <jikuya@gmail.com>',
+    VERSION_FROM  => 'lib/Geronimo.pm',
     PREREQ_PM     => {
         # Amon2
         'Amon2'                           => '3.52',
+        'Hash::MultiValue'                => '0.12',
+        'Amon2::Auth'                     => '0.02',
         'Text::Xslate'                    => '1.5006',
         'Test::More'                      => '0.98',
         'Amon2::DBI'                      => '0.06',
@@ -18,7 +20,7 @@ WriteMakefile(
         'Plack::Session'                  => '0.14',
         'Test::WWW::Mechanize::PSGI'      => '0',
         'Time::Piece'                     => '1.20',
-        # Terryman
+        # Geronimo
         'Plack'                           => '1.0001',
         'Starman'                         => '0.3001',
         'Server::Starter'                 => '0.11',

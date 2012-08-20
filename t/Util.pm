@@ -38,11 +38,11 @@ sub slurp {
 }
 
 # initialize database
-use Terryman;
+use Geronimo;
 {
     unlink 'db/test.db' if -f 'db/test.db';
 
-    my $c = Terryman->new();
+    my $c = Geronimo->new();
     $c->setup_schema();
 }
 

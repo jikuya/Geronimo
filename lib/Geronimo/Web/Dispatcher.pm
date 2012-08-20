@@ -1,4 +1,4 @@
-package Terryman::Web::Dispatcher;
+package Geronimo::Web::Dispatcher;
 use strict;
 use warnings;
 use utf8;

@@ -4,9 +4,9 @@ use utf8;
 use Test::More;
 
 use_ok $_ for qw(
-    Terryman
-    Terryman::Web
-    Terryman::Web::Dispatcher
+    Geronimo
+    Geronimo::Web
+    Geronimo::Web::Dispatcher
 );
 
 done_testing;

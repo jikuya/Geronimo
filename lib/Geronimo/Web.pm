@@ -1,14 +1,14 @@
-package Terryman::Web;
+package Geronimo::Web;
 use strict;
 use warnings;
 use utf8;
-use parent qw/Terryman Amon2::Web/;
+use parent qw/Geronimo Amon2::Web/;
 use File::Spec;
 
 # dispatcher
-use Terryman::Web::Dispatcher;
+use Geronimo::Web::Dispatcher;
 sub dispatch {
-    return (Terryman::Web::Dispatcher->dispatch($_[0]) or die "response is not generated");
+    return (Geronimo::Web::Dispatcher->dispatch($_[0]) or die "response is not generated");
 }
 
 # setup view class

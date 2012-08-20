@@ -82,18 +82,18 @@ default-character-set = utf8
 
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ Terrymanインストール
++ Geronimoインストール
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 $ mkdir -p ~/perl5/app
 $ cd ~/perl5/app
-$ git clone https://github.com/jikuya/Terryman.git
-$ cd Terryman
+$ git clone https://github.com/jikuya/Geronimo.git
+$ cd Geronimo
 $ carton install
   ※入らないモジュールがある場合は、そのモジュールを一端、cpanmでインストールする
   ※例）cpanm モジュール名
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ Terrymanアプリ起動
++ Geronimoアプリ起動
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 $ carton exec -- plackup app.psgi
 
@@ -234,18 +234,18 @@ $ /usr/local/mysql/bin/mysql -u root -p
 $ sudo yum -y install sqlite
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ Terrymanインストール
++ Geronimoインストール
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 $ sudo yum -y install openssl-devel
 
 $ mkdir -p ~/perl5/app
 $ cd ~/perl5/app
-$ git clone https://github.com/jikuya/Terryman.git
-$ cd Terryman
+$ git clone https://github.com/jikuya/Geronimo.git
+$ cd Geronimo
 $ carton install
 
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
-+ Terrymanアプリ起動
++ Geronimoアプリ起動
 +++++++++++++++++++++++++++++++++++++++++++++++++++++++
 $ carton exec -- plackup app.psgi
 

@@ -9,7 +9,7 @@ if ( -d '/home/dotcloud/') {
 }
 +{
     'DBI' => [
-        "dbi:mysql:database=Terryman",
+        "dbi:mysql:database=Geronimo",
         'root',
         '',
         {
@@ -18,11 +18,11 @@ if ( -d '/home/dotcloud/') {
     ],
     Auth => {
         Facebook => {
-            client_id       => '248768195243664',                    # アプリケーションID
-            client_secret   => 'fd198fa74ce35a9ead922abfe6e47f0f',   # アプリケーション秘密鍵
-            callback_uri    => 'http://apps.facebook.com/terryman/', # FacebookアプリURL
+            client_id       => '172163892919796',                    # アプリケーションID
+            client_secret   => '2be721dc7cba72e138afa67e77ac7fde',   # アプリケーション秘密鍵
+            callback_uri    => 'http://59.106.177.81/',              # FacebookアプリURL
             scope           => 'read_stream,read_friendlists',       # 権限
         }
     },
-    'LOGIN_URL' => 'http://askque.com/login',
+    'LOGIN_URL' => 'http://59.106.177.81/login',
 };
