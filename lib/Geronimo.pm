@@ -23,4 +23,20 @@ sub setup_schema {
     }
 }
 
+use Facebook::Graph;
+sub fb {
+    my $self = shift;
+    if ( !defined $self->{fb} ) {
+        my $conf = $self->config->{'Facebook::Graph'}
+            or die "missing configuration for 'Facebook::Graph'";
+        my $fb = Facebook::Graph->new(
+            postback    => $conf->{postback},
+            app_id      => $conf->{app_id},
+            secret      => $conf->{secret},
+        );
+        $self->{fb} = $fb;
+    }
+    return $self->{fb};
+}
+
 1;
