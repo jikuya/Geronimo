@@ -1,0 +1,21 @@
+[% WRAPPER 'include/layout.tt' %]
+
+<section>
+
+[% IF likes %]
+<div>
+    <p>あなたの気になっている人です。</p>
+    [% FOR v IN likes %]
+        <p>
+            <img src="http://graph.facebook.com/[% v.to_id %]/picture">[% v.to_name %]
+            [% FOR l IN like_status_mst %]
+                [% IF l.id == v.like_status %][% l.text %][% END %]
+            [% END %]
+        </p>
+    [% END %]
+</div>
+[% END %]
+
+</section>
+
+[% END %]

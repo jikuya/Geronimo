@@ -24,5 +24,10 @@ if ( -d '/home/dotcloud/') {
             scope           => 'read_stream,read_friendlists',       # 権限
         }
     },
+    'Facebook::Graph' => {
+        postback => 'http://59.106.177.81/',
+        app_id   => '172163892919796',
+        secret   => '2be721dc7cba72e138afa67e77ac7fde',
+    },
     'LOGIN_URL' => 'http://59.106.177.81/login',
 };

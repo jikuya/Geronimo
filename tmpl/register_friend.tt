@@ -11,39 +11,32 @@
         ];
     </script>
 
-    <div class="modal hide fade" id="friendModal" class="pull-top">
-        <div class="modal-header">
-            <h3>あなたの尊敬する友達の名前を入力して下さい</h3>
-        </div>
-        <div class="modal-body">
-            <div class="ui-widget">
-                <input id="friends">
-                <span id='friendSpan'></span>
-            </div>
-        </div>
-        <div class="modal-footer">
-            <a class="btn btn-primary" id="friendModalNext" style="overflow: hidden; display: none;">次へ</a>
-            <a class="btn" id="friendModalChange" style="overflow: hidden; display: none;" >違う人を登録する</a>
-            <a class="btn" data-dismiss="modal">登録をやめる</a>
-        </div>
-    </div>
-
     <form action="/register_friend_complete" method="post" id="tags">
-    <div class="modal hide fade" id="tagModal">
-        <div class="modal-header">
-            <h3>尊敬する人の職種やスキルを入力して下さい</h3>
+        <h3>あなたの気になる友達の名前を入力して下さい</h3>
+        <div class="ui-widget">
+            <input id="friends">
+            <p>
+                <span id='friendSpan'></span>
+                <select name="likeStatus">
+                    [% FOR v IN like_status_mst %]
+                        <option value="[% v.id %]">[% v.text %]</option>
+                    [% END %]
+                </select>
+            </p>
         </div>
-        <div class="modal-body">
+
+        <br>
+        <br>
+
+        <div id="friendDetail" style="overflow: hidden; display: none;">
+            <h3>どういう関係ですか？</h3>
             <span id='friendNameInTag'></span>
-            <input type="texts"  name="tag[]" value="" class="tag"/>
+            <input type="texts"  name="friendExplain" value="" id="friendExplain"/>
             <input type="hidden" name="friendId"   value="" id="friendId">
             <input type="hidden" name="friendName" value="" id="friendName">
-        </div>
-        <div class="modal-footer">
             <button type="submit" class="btn btn-primary" id="tagModalNext" />完了</button>
-            <a class="btn" data-dismiss="modal">戻る</a>
+            <a class="btn" id="friendChange">違う人を登録する</a>
         </div>
-    </div>
     </form>
 [% ELSE %]
     エラーが発生しました。
@@ -56,12 +49,10 @@ $(function(){
         select: function(event, ui) {
             var friend_elem = '<br><img src="http://graph.facebook.com/'+ui.item.id+'/picture">' + ui.item.name;
             $('#friendSpan').append(friend_elem);
-            $('#friendNameInTag').append(friend_elem);
             $('#friendId').val(ui.item.id);
             $('#friendName').val(ui.item.name);
             $("#friends").attr("disabled","disabled");
-            $("#friendModalNext").show();
-            $("#friendModalChange").show();
+            $("#friendDetail").show();
         },
         search: function(event, ui){
             //if (event.keyCode == 229) return false;
@@ -75,29 +66,11 @@ $(function(){
         }
     });
 
-    $('#tags input.tag').tagedit({
-        autocompleteURL: '/tag_search',
-        autocompleteOptions: {minLength: 0},
-    }); 
-
-    $('#friendModal').modal({
-        keyboard: false
-    })
-
-    $('#friendModal').on('hidden', function () {
-        $(location).attr('href','/');
-    })
-
-    $("#friendModalNext").click(function(event){
-        $('#tagModal').modal('show');
-    });
-
-    $("#friendModalChange").click(function(event){
+    $("#friendChange").click(function(event){
         $("#friendSpan").empty();
-        $("#friendNameInTag").empty();
+        $("#friendExplain").empty();
         $("#friends").removeAttr("disabled");
-        $("#friendModalNext").hide();
-        $(this).hide();
+        $("#friendDetail").hide();
     });
 
 });
