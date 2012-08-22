@@ -15,27 +15,13 @@
         <h3>あなたの気になる友達の名前を入力して下さい</h3>
         <div class="ui-widget">
             <input id="friends">
-            <p>
+            <div id="nextActionButton" style="overflow: hidden; display: none;"> 
                 <span id='friendSpan'></span>
-                <select name="likeStatus">
-                    [% FOR v IN like_status_mst %]
-                        <option value="[% v.id %]">[% v.text %]</option>
-                    [% END %]
-                </select>
-            </p>
-        </div>
-
-        <br>
-        <br>
-
-        <div id="friendDetail" style="overflow: hidden; display: none;">
-            <h3>どういう関係ですか？</h3>
-            <span id='friendNameInTag'></span>
-            <input type="texts"  name="friendExplain" value="" id="friendExplain"/>
-            <input type="hidden" name="friendId"   value="" id="friendId">
-            <input type="hidden" name="friendName" value="" id="friendName">
-            <button type="submit" class="btn btn-primary" id="tagModalNext" />完了</button>
-            <a class="btn" id="friendChange">違う人を登録する</a>
+                <input type="hidden" name="friendId"   value="" id="friendId">
+                <input type="hidden" name="friendName" value="" id="friendName">
+                <button type="submit" class="btn btn-primary" id="tagModalNext" />完了</button>
+                <a class="btn" id="friendChange">違う人を登録する</a>
+            </div>
         </div>
     </form>
 [% ELSE %]
@@ -52,7 +38,7 @@ $(function(){
             $('#friendId').val(ui.item.id);
             $('#friendName').val(ui.item.name);
             $("#friends").attr("disabled","disabled");
-            $("#friendDetail").show();
+            $("#nextActionButton").show();
         },
         search: function(event, ui){
             //if (event.keyCode == 229) return false;
@@ -70,7 +56,7 @@ $(function(){
         $("#friendSpan").empty();
         $("#friendExplain").empty();
         $("#friends").removeAttr("disabled");
-        $("#friendDetail").hide();
+        $("#nextActionButton").hide();
     });
 
 });

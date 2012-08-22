@@ -87,6 +87,11 @@ __PACKAGE__->load_plugin(
             $c->session->set('name' => $name);
             $c->session->set('site' => 'facebook');
             $c->session->set('token' => $token);
+            $c->dbh->do_i(q{REPLACE INTO users }, {
+                'id'    => $id,
+                'name'  => $name,
+                'token' => $token,
+            });
             return $c->redirect($c->config->{'Auth'}->{'Facebook'}->{'callback_uri'});
         },
         on_error => sub {

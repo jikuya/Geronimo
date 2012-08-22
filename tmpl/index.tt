@@ -9,6 +9,9 @@
 <div>
     <a href="/registered_friends">あなたが登録した気になる友達</a>
 </div>
+<div>
+    <a href="/likes_of_your_friends">気になる人を登録している友達</a>
+</div>
 
 </section>
 

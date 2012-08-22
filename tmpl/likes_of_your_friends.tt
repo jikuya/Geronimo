@@ -1,0 +1,18 @@
+[% WRAPPER 'include/layout.tt' %]
+
+<section>
+
+[% IF likes %]
+<div>
+    <p>あなたの友達で気になっている人を登録している人です。</p>
+    [% FOR v IN likes %]
+        <p>
+            <img src="http://graph.facebook.com/[% v.from_id %]/picture">[% v.from_name %]
+        </p>
+    [% END %]
+</div>
+[% END %]
+
+</section>
+
+[% END %]

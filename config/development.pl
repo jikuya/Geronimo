@@ -18,10 +18,10 @@ if ( -d '/home/dotcloud/') {
     ],
     Auth => {
         Facebook => {
-            client_id       => '274134296026437',                    # アプリケーションID
-            client_secret   => '8d683563625c6e22bde55161866a5f94',   # アプリケーション秘密鍵
-            callback_uri    => 'http://localhost:5000',              # FacebookアプリURL
-            scope           => 'read_stream,read_friendlists',       # 権限
+            client_id       => '274134296026437',                                     # アプリケーションID
+            client_secret   => '8d683563625c6e22bde55161866a5f94',                    # アプリケーション秘密鍵
+            callback_uri    => 'http://localhost:5000',                               # FacebookアプリURL
+            scope           => 'offline_access,email,read_stream,read_friendlists',   # 権限
         }
     },
     'Facebook::Graph' => {
@@ -29,5 +29,5 @@ if ( -d '/home/dotcloud/') {
         app_id   => '274134296026437',
         secret   => '8d683563625c6e22bde55161866a5f94',
     },
-    'LOGIN_URL' => 'http://localhost:5000/login',
+    'SITE_URL'  => 'http://localhost:5000',
 };

@@ -28,6 +28,8 @@ WriteMakefile(
         'Amon2::Plugin::Web::Auth'        => '0.02',
         'Facebook::Graph'                 => '1.0401',
         'DBD::mysql'                      => '4.021',
+        'Email::Sender::Simple'           => '0.120001',
+        'Data::Recursive::Encode'         => '0.04',
     },
     MIN_PERL_VERSION => '5.008001',
     (-d 'xt' and $ENV{AUTOMATED_TESTING} || $ENV{RELEASE_TESTING}) ? (
