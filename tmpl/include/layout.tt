@@ -19,10 +19,6 @@
     <script src="[% uri_for('/static/js/strftime.js') %]"></script>
     <script src="[% uri_for('/static/js/sprintf-0.7-beta1.js') %]"></script>
 
-    <link href="[% static_file('/static/css/jquery.tagedit.css') %]" rel="stylesheet" type="text/css" media="screen" />
-    <script src="[% uri_for('/static/js/jquery.autoGrowInput.js') %]"></script>
-    <script src="[% uri_for('/static/js/jquery.tagedit.js') %]"></script>
-
     <link href="[% static_file('/static/css/main.css') %]" rel="stylesheet" type="text/css" media="screen" />
     <script src="[% static_file('/static/js/main.js') %]"></script>
     <!--[if lt IE 9]>

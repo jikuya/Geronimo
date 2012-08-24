@@ -13,3 +13,5 @@ META.yml
 MYMETA.json
 MYMETA.yml
 local/
+.carton/
+carton.lock

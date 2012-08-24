@@ -6,23 +6,12 @@ use Amon2::Web::Dispatcher::Lite;
 use JSON qw(decode_json);
 use SQL::Interp qw(sql_interp);
 
-use Email::Sender::Simple qw(sendmail);
-use Email::Simple;
-use Email::Simple::Creator;
-use Data::Recursive::Encode;
-use Encode;
-
 any '/' => sub {
     my ($c) = @_;
     if (facebookAuth($c)) {
-        $c->render(
-            'index.tt',
-            {
-                name      => $c->session->get('name'),
-            }
-        );
+        $c->render('index.tt', { name => $c->session->get('name') });
     } else {
-        $c->render('login.tt', {login_url => qq|$c->config->{'SITE_URL'}/login|});
+        $c->render('login.tt', { login_url => $c->config->{'SITE_URL'}.'/login' });
     }
 };
 
@@ -39,7 +28,7 @@ any '/register_friend' => sub {
             }
         );
     } else {
-        $c->render('login.tt', {login_url => qq|$c->config->{'SITE_URL'}/login|});
+        $c->render('login.tt', { login_url => $c->config->{'SITE_URL'}.'/login' });
     }
 };
 
@@ -59,7 +48,7 @@ post '/register_friend_complete' => sub {
 
         $c->redirect('/');
     } else {
-        $c->render('login.tt', {login_url => qq|$c->config->{'SITE_URL'}/login|});
+        $c->render('login.tt', { login_url => $c->config->{'SITE_URL'}.'/login' });
     }
 };
 
@@ -82,7 +71,7 @@ any '/registered_friends' => sub {
             }
         );
     } else {
-        $c->render('login.tt', {login_url => qq|$c->config->{'SITE_URL'}/login|});
+        $c->render('login.tt', { login_url => $c->config->{'SITE_URL'}.'/login' });
     }
 };
 
@@ -98,7 +87,7 @@ any '/likes_of_your_friends' => sub {
             }
         );
     } else {
-        $c->render('login.tt', {login_url => qq|$c->config->{'SITE_URL'}/login|});
+        $c->render('login.tt', { login_url => $c->config->{'SITE_URL'}.'/login' });
     }
 };
 
@@ -192,6 +181,8 @@ sub sendMailOfReciprocalLove {
         my $token = $c->dbh->selectrow_arrayref(qq/SELECT token FROM users WHERE id = $to_id/);
         if ($token) {
             my $userData = getFacebookUserInfo($c, $token->[0]);
+use Data::Dumper;
+warn Dumper $userData;
             $c->send_mail($userData->{name}, $userData->{email});
         }
     }

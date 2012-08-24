@@ -670,7 +670,7 @@
                "version" : "0.34"
             }
          },
-         "target" : "Class::Accessor",
+         "target" : "Class::Accessor::Fast",
          "version" : "0.34"
       },
       "Class::Data::Inheritable" : {
@@ -8494,7 +8494,7 @@
                "version" : "0.120001"
             }
          },
-         "target" : "Email::Sender::Simple",
+         "target" : "Email::Sender",
          "version" : "0.120001"
       },
       "Email::Simple" : {
@@ -8562,163 +8562,6 @@
          },
          "target" : "Email::Simple",
          "version" : "2.102"
-      },
-      "Encode" : {
-         "dist" : "Encode-2.47",
-         "mymeta" : {
-            "abstract" : "unknown",
-            "author" : [
-               "unknown"
-            ],
-            "dynamic_config" : 0,
-            "generated_by" : "ExtUtils::MakeMaker version 6.6302, CPAN::Meta::Converter version 2.120921, CPAN::Meta::Converter version 2.120630",
-            "license" : [
-               "perl_5"
-            ],
-            "meta-spec" : {
-               "url" : "http://search.cpan.org/perldoc?CPAN::Meta::Spec",
-               "version" : "2"
-            },
-            "name" : "Encode",
-            "no_index" : {
-               "directory" : [
-                  "t",
-                  "inc"
-               ]
-            },
-            "prereqs" : {
-               "build" : {
-                  "requires" : {
-                     "ExtUtils::MakeMaker" : "0"
-                  }
-               },
-               "configure" : {
-                  "requires" : {
-                     "ExtUtils::MakeMaker" : "0"
-                  }
-               },
-               "runtime" : {
-                  "requires" : {}
-               }
-            },
-            "release_status" : "stable",
-            "version" : "2.47"
-         },
-         "name" : "Encode",
-         "pathname" : "D/DA/DANKOGAI/Encode-2.47.tar.gz",
-         "provides" : {
-            "Encode" : {
-               "file" : "Encode.pm",
-               "version" : "2.47"
-            },
-            "Encode::Alias" : {
-               "file" : "Encode/Alias.pm",
-               "version" : "2.16"
-            },
-            "Encode::Byte" : {
-               "file" : "Encode/Byte.pm",
-               "version" : "2.04"
-            },
-            "Encode::CJKConstants" : {
-               "file" : "Encode/CJKConstants.pm",
-               "version" : "2.02"
-            },
-            "Encode::CN" : {
-               "file" : "Encode/CN.pm",
-               "version" : "2.03"
-            },
-            "Encode::CN::HZ" : {
-               "file" : "Encode/CN/HZ.pm",
-               "version" : "2.05"
-            },
-            "Encode::Config" : {
-               "file" : "Encode/Config.pm",
-               "version" : "2.05"
-            },
-            "Encode::EBCDIC" : {
-               "file" : "Encode/EBCDIC.pm",
-               "version" : "2.02"
-            },
-            "Encode::Encoder" : {
-               "file" : "Encode/Encoder.pm",
-               "version" : "2.02"
-            },
-            "Encode::Encoding" : {
-               "file" : "Encode/Encoding.pm",
-               "version" : "2.05"
-            },
-            "Encode::GSM0338" : {
-               "file" : "Encode/GSM0338.pm",
-               "version" : "2.02"
-            },
-            "Encode::Guess" : {
-               "file" : "Encode/Guess.pm",
-               "version" : "2.05"
-            },
-            "Encode::Internal" : {
-               "file" : "Encode.pm"
-            },
-            "Encode::JP" : {
-               "file" : "Encode/JP.pm",
-               "version" : "2.04"
-            },
-            "Encode::JP::H2Z" : {
-               "file" : "Encode/JP/H2Z.pm",
-               "version" : "2.02"
-            },
-            "Encode::JP::JIS7" : {
-               "file" : "Encode/JP/JIS7.pm",
-               "version" : "2.04"
-            },
-            "Encode::KR" : {
-               "file" : "Encode/KR.pm",
-               "version" : "2.03"
-            },
-            "Encode::KR::2022_KR" : {
-               "file" : "Encode/KR/2022_KR.pm",
-               "version" : "2.02"
-            },
-            "Encode::MIME::Header" : {
-               "file" : "Encode/MIME/Header.pm",
-               "version" : "2.13"
-            },
-            "Encode::MIME::Header::ISO_2022_JP" : {
-               "file" : "Encode/MIME/Header/ISO_2022_JP.pm",
-               "version" : "1.03"
-            },
-            "Encode::MIME::Name" : {
-               "file" : "Encode/MIME/Name.pm",
-               "version" : "1.01"
-            },
-            "Encode::Symbol" : {
-               "file" : "Encode/Symbol.pm",
-               "version" : "2.02"
-            },
-            "Encode::TW" : {
-               "file" : "Encode/TW.pm",
-               "version" : "2.03"
-            },
-            "Encode::UTF_EBCDIC" : {
-               "file" : "Encode.pm"
-            },
-            "Encode::Unicode" : {
-               "file" : "Encode/Unicode.pm",
-               "version" : "2.07"
-            },
-            "Encode::Unicode::UTF7" : {
-               "file" : "Encode/Unicode/UTF7.pm",
-               "version" : "2.06"
-            },
-            "Encode::utf8" : {
-               "file" : "Encode.pm"
-            },
-            "encoding" : {
-               "file" : "encoding.pm",
-               "version" : "2.6_01"
-            }
-         },
-         "target" : "Encode",
-         "version" : "2.47"
       },
       "Encode::Locale" : {
          "dist" : "Encode-Locale-1.03",
@@ -9258,7 +9101,7 @@
                "file" : "ExtUtils/MM.pm"
             },
             "MY" : {
-               "file" : "ExtUtils/MakeMaker.pm"
+               "file" : "ExtUtils/MY.pm"
             }
          },
          "target" : "http://search.cpan.org/CPAN/authors/id/M/MS/MSCHWERN/ExtUtils-MakeMaker-6.62.tar.gz",
@@ -14276,7 +14119,7 @@
          "version" : "1.06"
       },
       "Plack" : {
-         "dist" : "Plack-1.0001",
+         "dist" : "Plack-1.0002",
          "mymeta" : {
             "abstract" : "Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)",
             "author" : [
@@ -14346,11 +14189,11 @@
                   "url" : "git://github.com/plack/Plack.git"
                }
             },
-            "version" : "1.0001",
+            "version" : "1.0002",
             "x_authority" : "MIYAGAWA"
          },
          "name" : "Plack",
-         "pathname" : "M/MI/MIYAGAWA/Plack-1.0001.tar.gz",
+         "pathname" : "M/MI/MIYAGAWA/Plack-1.0002.tar.gz",
          "provides" : {
             "HTTP::Message::PSGI" : {
                "file" : "HTTP/Message/PSGI.pm"
@@ -14360,7 +14203,7 @@
             },
             "Plack" : {
                "file" : "Plack.pm",
-               "version" : "1.0001"
+               "version" : "1.0002"
             },
             "Plack::App::CGIBin" : {
                "file" : "Plack/App/CGIBin.pm"
@@ -14541,14 +14384,14 @@
             },
             "Plack::Request" : {
                "file" : "Plack/Request.pm",
-               "version" : "1.0001"
+               "version" : "1.0002"
             },
             "Plack::Request::Upload" : {
                "file" : "Plack/Request/Upload.pm"
             },
             "Plack::Response" : {
                "file" : "Plack/Response.pm",
-               "version" : "1.0001"
+               "version" : "1.0002"
             },
             "Plack::Runner" : {
                "file" : "Plack/Runner.pm"
@@ -14591,7 +14434,7 @@
             }
          },
          "target" : "Plack",
-         "version" : "1.0001"
+         "version" : "1.0002"
       },
       "Plack::Middleware::ReverseProxy" : {
          "dist" : "Plack-Middleware-ReverseProxy-0.14",
@@ -17968,7 +17811,7 @@
                "file" : "URI/urn/oid.pm"
             }
          },
-         "target" : "URI::Escape",
+         "target" : "URI",
          "version" : "1.60"
       },
       "WWW::Mechanize" : {

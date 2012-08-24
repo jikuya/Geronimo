@@ -4,8 +4,8 @@ Description:  Package names found in carton.lock
 Columns:      package name, version, path
 Intended-For: Automated fetch routines, namespace documentation.
 Written-By:   Carton v0.9.4
-Line-Count:   1836
-Last-Updated: Wed Aug 22 18:32:13 2012
+Line-Count:   1864
+Last-Updated: Fri Aug 24 10:37:00 2012
 
 Amon2                                  3.52  T/TO/TOKUHIROM/Amon2-3.52.tar.gz
 Amon2::Auth                            0.02  T/TO/TOKUHIROM/Amon2-Auth-0.02.tar.gz
@@ -1151,7 +1151,34 @@ Email::Sender::Util                0.120001  R/RJ/RJBS/Email-Sender-0.120001.tar
 Email::Simple                         2.102  R/RJ/RJBS/Email-Simple-2.102.tar.gz
 Email::Simple::Creator                2.102  R/RJ/RJBS/Email-Simple-2.102.tar.gz
 Email::Simple::Header                 2.102  R/RJ/RJBS/Email-Simple-2.102.tar.gz
+Encode                                 2.47  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::Alias                          2.16  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::Byte                           2.04  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::CJKConstants                   2.02  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::CN                             2.03  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::CN::HZ                         2.05  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::Config                         2.05  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::EBCDIC                         2.02  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::Encoder                        2.02  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::Encoding                       2.05  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::GSM0338                        2.02  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::Guess                          2.05  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::Internal                      undef  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::JP                             2.04  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::JP::H2Z                        2.02  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::JP::JIS7                       2.04  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::KR                             2.03  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::KR::2022_KR                    2.02  D/DA/DANKOGAI/Encode-2.47.tar.gz
 Encode::Locale                         1.03  G/GA/GAAS/Encode-Locale-1.03.tar.gz
+Encode::MIME::Header                   2.13  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::MIME::Header::ISO_2022_JP       1.03  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::MIME::Name                     1.01  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::Symbol                         2.02  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::TW                             2.03  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::UTF_EBCDIC                    undef  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::Unicode                        2.07  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::Unicode::UTF7                  2.06  D/DA/DANKOGAI/Encode-2.47.tar.gz
+Encode::utf8                          undef  D/DA/DANKOGAI/Encode-2.47.tar.gz
 Eval::Closure                          0.08  D/DO/DOY/Eval-Closure-0.08.tar.gz
 ExtUtils::Command::MM                  6.62  http:/search.cpan.org/CPAN/authors/id/M/MS/MSCHWERN/ExtUtils-MakeMaker-6.62.tar.gz
 ExtUtils::Liblist                      6.62  http:/search.cpan.org/CPAN/authors/id/M/MS/MSCHWERN/ExtUtils-MakeMaker-6.62.tar.gz
@@ -1837,6 +1864,7 @@ YAML::Type::regexp                    undef  M/MS/MSTROUT/YAML-0.84.tar.gz
 YAML::Type::undef                     undef  M/MS/MSTROUT/YAML-0.84.tar.gz
 YAML::Types                            0.84  M/MS/MSTROUT/YAML-0.84.tar.gz
 YAML::Warning                         undef  M/MS/MSTROUT/YAML-0.84.tar.gz
+encoding                             2.6_01  D/DA/DANKOGAI/Encode-2.47.tar.gz
 metaclass                            2.0603  D/DO/DOY/Moose-2.0603.tar.gz
 oose                                 2.0603  D/DO/DOY/Moose-2.0603.tar.gz
 ouse                                  undef  G/GF/GFUJI/Mouse-0.99.tar.gz
