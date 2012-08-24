@@ -89,6 +89,8 @@ $ cd ~/perl5/app
 $ git clone https://github.com/jikuya/Geronimo.git
 $ cd Geronimo
 $ carton install
+  ※入らないモジュールがある場合は、ExtUtils-MakeMakerのバージョンを下げてみる
+  ※例）carton install http://search.cpan.org/CPAN/authors/id/M/MS/MSCHWERN/ExtUtils-MakeMaker-6.62.tar.gz
   ※入らないモジュールがある場合は、そのモジュールを一端、cpanmでインストールする
   ※例）cpanm モジュール名
 
