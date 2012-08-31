@@ -1,18 +1,193 @@
 [% WRAPPER 'include/layout.tt' %]
 
-<section>
+<!--///////トップページ///////-->
+<div data-role="page" id="top">
 
-こんにちは [% name %] さん
-<div>
-    <a href="/register_friend">あなたの気になる友達の名前を登録して下さい</a>
-</div>
-<div>
-    <a href="/registered_friends">あなたが登録した気になる友達</a>
-</div>
-<div>
-    <a href="/likes_of_your_friends">気になる人を登録している友達</a>
+<div data-role="header" class="toppage">
+<h1>Geronimo</h1>
 </div>
 
-</section>
+<div data-role="content">
+<div data-role="controlgroup">
+<img src="images/sample.png" class="wide" />
+<a href="#register_friend" data-role="button" data-icon="arrow-r" data-iconpos="right">コンテンツ1</a>
+<a href="#registered_friends" data-role="button" data-icon="arrow-r" data-iconpos="right">コンテンツ2</a>
+<a href="#likes_of_your_friends" data-role="button" data-icon="arrow-r" data-iconpos="right">コンテンツ3</a>
+</div>
+</div>
+
+[% INCLUDE 'include/footer.tt' %]
+
+</div>
+<!--///////トップページ///////-->
+
+<!--///////コンテンツ1///////-->
+[% INCLUDE 'register_friend.tt' %]
+<!--///////コンテンツ1///////-->
+
+<!--///////コンテンツ2///////-->
+<div data-role="page" id="registered_friends">
+
+<div data-role="header">
+<h1>コンテンツ2</h1>
+</div>
+
+<div data-role="content">
+<img src="images/sample_s.png" class="wide" />
+<p>このテンプレート個人・法人を問わず自由にご利用頂けます。<br />
+ベースデザインについては「data-theme」で変更可能。<br />
+また、アイコンやページ遷移時のエフェクトも自由に変更できます。<br />
+こちらのページで簡単なチートシートがご覧になれます。<br />
+<a href="http://www.finefinefine.jp/web/kiji1549/" target="_blank">jQuery Mobileのまとめ資料</a>
+</p>
+</div>
+
+<div data-role="footer">
+<div data-role="navbar">
+<ul>
+<li><a href="http://www.finefinefine.jp/" data-icon="arrow-u" target="_blank">PC用サイトへ</a></li>
+<li><a href="#menu4" data-icon="info" data-transition="slideup">会社情報</a></li>
+<li><a href="#menu5" data-icon="star" data-transition="pop">お問い合わせ</a></li>
+</ul>
+</div>
+<h4><a href="tel:00-0000-0000">00-0000-0000</a></h4>
+</div>
+
+</div>
+<!--///////コンテンツ2///////-->
+
+<!--///////コンテンツ3///////-->
+<div data-role="page" id="likes_of_your_friends">
+
+<div data-role="header">
+<h1>コンテンツ3</h1>
+</div>
+
+<div data-role="content">
+<img src="images/sample_s.png" class="wide" />
+<div class="ui-grid-b">
+<div class="ui-block-a"><div class=" ui-bar ui-bar-c">グリッドレイアウトも自由に作成可能</div></div>
+<div class="ui-block-b"><div class=" ui-bar ui-bar-c">グリッドレイアウトも自由に作成可能</div></div>
+<div class="ui-block-c"><div class=" ui-bar ui-bar-c">グリッドレイアウトも自由に作成可能</div></div>
+</div>
+</div>
+
+<div data-role="footer">
+<div data-role="navbar">
+<ul>
+<li><a href="http://www.finefinefine.jp/" data-icon="arrow-u" target="_blank">PC用サイトへ</a></li>
+<li><a href="#menu4" data-icon="info" data-transition="slideup">会社情報</a></li>
+<li><a href="#menu5" data-icon="star" data-transition="pop">お問い合わせ</a></li>
+</ul>
+</div>
+<h4><a href="tel:00-0000-0000">00-0000-0000</a></h4>
+</div>
+
+</div>
+<!--///////コンテンツ3///////-->
+
+<!--///////会社概要///////-->
+<div data-role="page" id="menu4">
+
+<div data-role="header">
+<h1>会社概要</h1>
+</div>
+
+<div data-role="content">
+<h4>商号</h4>
+<p>株式会社○○○○○○○○○○</p>
+<h4>設立</h4>
+<p>2011年10月1日</p>
+<h4>社員数</h4>
+<p>2,000人</p>
+<h4>所在地</h4>
+<p>
+〒100-0000<br>
+東京都○○区○○○○ 0-0-0<br>
+<div id="map"></div>
+電話：00-0000-0000<br>
+FAX：00-0000-0000</p>
+</div>
+
+<div data-role="footer">
+<div data-role="navbar">
+<ul>
+<li><a href="http://www.finefinefine.jp/" data-icon="arrow-u" target="_blank">PC用サイトへ</a></li>
+<li><a href="#menu4" data-icon="info" data-transition="slideup">会社情報</a></li>
+<li><a href="#menu5" data-icon="star" data-transition="pop">お問い合わせ</a></li>
+</ul>
+</div>
+<h4><a href="tel:00-0000-0000">00-0000-0000</a></h4>
+</div>
+
+</div>
+<!--///////会社概要///////-->
+
+<!--///////お問い合わせ///////-->
+<div data-role="page" id="menu5">
+
+<div data-role="header">
+<h1>お問い合わせ</h1>
+</div>
+
+<form action="#" method="post">
+<div data-role="content">
+<div data-role="fieldcontain">
+<label for="name">名前</label>
+<input type="text" id="name">
+</div>
+<div data-role="fieldcontain">
+<label for="gender">性別</label>
+<select name="gender" id="gender" data-role="slider">
+<option value="男性">男性</option>
+<option value="女性">女性</option>
+</select>
+</div>
+<div data-role="fieldcontain">
+<fieldset data-role="controlgroup">
+<legend>お問い合わせ種別</legend>
+<input type="checkbox" name="type1" id="type1" value="HP新規作成">
+<label for="type1">HP新規作成</label>
+<input type="checkbox" name="type2" id="type2" value="HPリニューアル">
+<label for="type2">HPリニューアル</label>
+<input type="checkbox" name="type3" id="type3" value="システム開発">
+<label for="type3">システム開発</label>
+<input type="checkbox" name="type4" id="type4" value="コンサルティング">
+<label for="type4">コンサルティング</label>
+</fieldset>
+</div>
+<div data-role="fieldcontain">
+<label for="comment">お問い合わせ内容詳細</label>
+<textarea id="comment"></textarea>
+</div>
+<div data-role="fieldcontain">
+<fieldset data-role="controlgroup">
+<legend>導入希望時期</legend>
+<input type="radio" name="choice" id="choice1" value="1ヶ月以内" checked="checked" />
+<label for="choice1">1ヶ月以内</label>
+<input type="radio" name="choice" id="choice2" value="1～3ヶ月以内" />
+<label for="choice2">1～3ヶ月以内</label>
+<input type="radio" name="choice" id="choice3" value="3ヶ月以降" />
+<label for="choice3">3ヶ月以降</label>
+</fieldset>
+</div>
+<input type="button" value="キャンセル" data-icon="delete" data-inline="true">
+<input type="submit" value="送信" data-icon="arrow-r" data-inline="true">
+</div>
+</form>
+
+<div data-role="footer">
+<div data-role="navbar">
+<ul>
+<li><a href="http://www.finefinefine.jp/" data-icon="arrow-u" target="_blank">PC用サイトへ</a></li>
+<li><a href="#menu4" data-icon="info" data-transition="slideup">会社情報</a></li>
+<li><a href="#menu5" data-icon="star" data-transition="pop">お問い合わせ</a></li>
+</ul>
+</div>
+<h4><a href="tel:00-0000-0000">00-0000-0000</a></h4>
+</div>
+
+</div>
+<!--///////お問い合わせ///////-->
 
 [% END %]

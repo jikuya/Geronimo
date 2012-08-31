@@ -1,56 +1,72 @@
-[% WRAPPER 'include/layout.tt' %]
+<div data-role="page" id="register_friend">
 
-<section>
+<div data-role="header">
+<h1>気になる人を登録</h1>
+</div>
+
+<div data-role="content">
 
 [% IF data %]
     <script type="text/javascript">
-        var friends = [
-        [% FOR v IN data %]
-            {label:"[% v.name %]",id:"[% v.id %]",name:"[% v.name %]"},
-        [% END %]
-        ];
     </script>
 
-    <form action="/register_friend_complete" method="post" id="tags">
-        <h3>あなたの気になる友達の名前を入力して下さい</h3>
-        <div class="ui-widget">
-            <input id="friends">
-            <div id="nextActionButton" style="overflow: hidden; display: none;"> 
-                <span id='friendSpan'></span>
-                <input type="hidden" name="friendId"   value="" id="friendId">
-                <input type="hidden" name="friendName" value="" id="friendName">
-                <button type="submit" class="btn btn-primary" id="tagModalNext" />完了</button>
-                <a class="btn" id="friendChange">違う人を登録する</a>
-            </div>
-        </div>
-    </form>
+    <h3>あなたの気になる友達の名前を入力して下さい</h3>
+    <input type="search" id="searchField" placeholder="Facebookの友達">
+    <ul id="suggestions" data-role="listview" data-inset="true"></ul>
 [% ELSE %]
     エラーが発生しました。
 [% END %]
 
+</div>
+
+[% INCLUDE 'include/footer.tt' %]
+
+</div>
+
+<div data-role="page" id="register_friend_confirm">
+
+<div data-role="header">
+<h1>登録前確認</h1>
+</div>
+
+<div data-role="content">
+
+    <div id="friendDisplay"></div>
+    <form action="/register_friend_complete" method="post" id="tags">
+        <input type="hidden" name="friendId"   value="" id="friendId">
+        <input type="hidden" name="friendName" value="" id="friendName">
+        <button type="submit" data-role="button" data-theme="e">登録する</button>
+        <a href="#register_friend" data-role="button" data-direction="reverse" data-theme="b">違う人を登録する</a>
+    </form>
+
+</div>
+
+[% INCLUDE 'include/footer.tt' %]
+
+</div>
+
 <script>
-$(function(){
-    $("#friends").autocomplete({
-        source: friends,
-        select: function(event, ui) {
-            var friend_elem = '<br><img src="http://graph.facebook.com/'+ui.item.id+'/picture">' + ui.item.name;
-            $('#friendSpan').append(friend_elem);
-            $('#friendId').val(ui.item.id);
-            $('#friendName').val(ui.item.name);
-            $("#friends").attr("disabled","disabled");
-            $("#nextActionButton").show();
+$("#register_friend").bind("pageshow", function(e) {
+
+    autocompleteData = [% data | mark_raw %]
+
+    $("#searchField").autocomplete({
+        target: $('#suggestions'),
+        source: autocompleteData,
+        callback: function(e) {
+            var selected = $(e.currentTarget);
+            var friend_id   = selected.data('autocomplete').value;
+            var friend_name = selected.data('autocomplete').label;
+            var friend_elem = '<img src="http://graph.facebook.com/'+ friend_id +'/picture">'+ friend_name;
+            $('#friendDisplay').append(friend_elem);
+            $('#searchField').val(friend_name);
+            $('#friendId').val(friend_id);
+            $('#friendName').val(friend_name);
+            window.location.replace('/#register_friend_confirm');
         },
-        search: function(event, ui){
-            //if (event.keyCode == 229) return false;
-            //return true;
-        },
-        minLength: 2,
-    })
-    .keyup(function(event){
-        if (event.keyCode == 13) {
-            //$(this).autocomplete("search");
-        }
+        minLength: 1
     });
+
 
     $("#friendChange").click(function(event){
         $("#friendSpan").empty();
@@ -62,6 +78,3 @@ $(function(){
 });
 </script>
 
-</section>
-
-[% END %]

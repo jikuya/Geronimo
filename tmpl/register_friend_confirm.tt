@@ -1,0 +1,56 @@
+<div data-role="page" id="register_friend_confirm">
+
+<div data-role="header">
+<h1>登録前確認</h1>
+</div>
+
+<div data-role="content">
+
+    <form action="/register_friend_complete" method="post" id="tags">
+        <h3>これでOKですか？</h3>
+        <div class="ui-widget">
+            <input type="search" id="searchField" placeholder="Facebookの友達">
+            <ul id="suggestions" data-role="listview" data-inset="true"></ul>
+            <div id="nextActionButton" style="overflow: hidden; display: none;"> 
+                <input type="hidden" name="friendId"   value="" id="friendId">
+                <input type="hidden" name="friendName" value="" id="friendName">
+                <button type="submit" class="btn btn-primary" id="tagModalNext" />完了</button>
+                <a class="btn" id="friendChange">違う人を登録する</a>
+            </div>
+        </div>
+    </form>
+
+</div>
+
+[% INCLUDE 'include/footer.tt' %]
+
+</div>
+
+<script>
+$("#register_friend").bind("pageshow", function(e) {
+
+    autocompleteData = [% data | mark_raw %]
+
+    $("#searchField").autocomplete({
+        target: $('#suggestions'),
+        source: autocompleteData,
+        callback: function(e) {
+            var $selected = $(e.currentTarget);
+            $('#searchField').val($selected.data('autocomplete').value);
+            $('#searchFIeld').autocomplete('clear');
+            window.location.href("/#refister_friend_comfirm");
+        },
+        minLength: 1
+    });
+
+
+    $("#friendChange").click(function(event){
+        $("#friendSpan").empty();
+        $("#friendExplain").empty();
+        $("#friends").removeAttr("disabled");
+        $("#nextActionButton").hide();
+    });
+
+});
+</script>
+

@@ -9,7 +9,22 @@ use SQL::Interp qw(sql_interp);
 any '/' => sub {
     my ($c) = @_;
     if (facebookAuth($c)) {
-        $c->render('index.tt', { name => $c->session->get('name') });
+        my $friendsData = getFacebookFriends($c);
+        my $friendsDataStr = q/$.parseJSON('[/;
+        while ( (my $k, my $v) = each $friendsData ) {
+            my $friendId   = $v->{id};
+            my $friendName = $v->{name};
+            $friendsDataStr .= qq/{"value":"$friendId","label":"$friendName"},/;
+        }
+        chop($friendsDataStr);
+        $friendsDataStr .= q/]');/;
+        $c->render(
+            'index.tt',
+            {
+                name            => $c->session->get('name'),
+                data            => $friendsDataStr,
+            }
+        );
     } else {
         $c->render('login.tt', { login_url => $c->config->{'SITE_URL'}.'/login' });
     }
@@ -181,8 +196,6 @@ sub sendMailOfReciprocalLove {
         my $token = $c->dbh->selectrow_arrayref(qq/SELECT token FROM users WHERE id = $to_id/);
         if ($token) {
             my $userData = getFacebookUserInfo($c, $token->[0]);
-use Data::Dumper;
-warn Dumper $userData;
             $c->send_mail($userData->{name}, $userData->{email});
         }
     }

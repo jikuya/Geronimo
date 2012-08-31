@@ -1,0 +1,66 @@
+<div data-role="page" id="register_friend">
+
+<div data-role="header">
+<h1>気になる人を登録</h1>
+</div>
+
+<div data-role="content">
+
+[% IF data %]
+    <script type="text/javascript">
+        var friends = [
+        [% FOR v IN data %]
+            {label:"[% v.name %]",id:"[% v.id %]",name:"[% v.name %]"},
+        [% END %]
+        ];
+    </script>
+
+    <form action="/register_friend_complete" method="post" id="tags">
+        <h3>あなたの気になる友達の名前を入力して下さい</h3>
+        <div class="ui-widget">
+            <input type=text id="friends">
+            <div id="nextActionButton" style="overflow: hidden; display: none;"> 
+                <ul id="suggestions" data-role="listview" data-inset="true"></ul>
+                <input type="hidden" name="friendId"   value="" id="friendId">
+                <input type="hidden" name="friendName" value="" id="friendName">
+                <button type="submit" class="btn btn-primary" id="tagModalNext" />完了</button>
+                <a class="btn" id="friendChange">違う人を登録する</a>
+            </div>
+        </div>
+    </form>
+[% ELSE %]
+    エラーが発生しました。
+[% END %]
+
+</div>
+
+[% INCLUDE 'include/footer.tt' %]
+
+<script>
+$("#register_friend").bind("pageshow", function(e) {
+
+    $("#friends").autocomplete({
+        target: $('#suggestions'),
+        source: friends,
+        minLength: 3,
+        callback: fn(event, ui) {
+            var friend_elem = '<br><img src="http://graph.facebook.com/'+ui.item.id+'/picture">' + ui.item.name;
+            alert($friend_elem);
+            $('#friendSpan').append(friend_elem);
+            $('#friendId').val(ui.item.id);
+            $('#friendName').val(ui.item.name);
+            $("#friends").attr("disabled","disabled");
+            $("#nextActionButton").show();
+        }
+    });
+
+    $("#friendChange").click(function(event){
+        $("#friendSpan").empty();
+        $("#friendExplain").empty();
+        $("#friends").removeAttr("disabled");
+        $("#nextActionButton").hide();
+    });
+
+});
+</script>
+

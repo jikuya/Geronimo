@@ -20,12 +20,12 @@ if ( -d '/home/dotcloud/') {
         Facebook => {
             client_id       => '274134296026437',                                     # アプリケーションID
             client_secret   => '8d683563625c6e22bde55161866a5f94',                    # アプリケーション秘密鍵
-            callback_uri    => 'http://localhost:5000',                               # FacebookアプリURL
+            callback_uri    => 'http://localhost:5000/',                               # FacebookアプリURL
             scope           => 'offline_access,email,read_stream,read_friendlists',   # 権限
         }
     },
     'Facebook::Graph' => {
-        postback => 'http://localhost:5000',
+        postback => 'http://localhost:5000/',
         app_id   => '274134296026437',
         secret   => '8d683563625c6e22bde55161866a5f94',
     },
