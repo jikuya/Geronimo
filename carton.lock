@@ -384,7 +384,7 @@
                },
                "runtime" : {
                   "requires" : {
-                     "Mouse" : "0.40"
+                     "Moose" : "0"
                   }
                }
             },
@@ -9101,7 +9101,7 @@
                "file" : "ExtUtils/MM.pm"
             },
             "MY" : {
-               "file" : "ExtUtils/MY.pm"
+               "file" : "ExtUtils/MakeMaker.pm"
             }
          },
          "target" : "http://search.cpan.org/CPAN/authors/id/M/MS/MSCHWERN/ExtUtils-MakeMaker-6.62.tar.gz",
@@ -14119,7 +14119,7 @@
          "version" : "1.06"
       },
       "Plack" : {
-         "dist" : "Plack-1.0002",
+         "dist" : "Plack-1.0003",
          "mymeta" : {
             "abstract" : "Perl Superglue for Web frameworks and Web Servers (PSGI toolkit)",
             "author" : [
@@ -14189,11 +14189,11 @@
                   "url" : "git://github.com/plack/Plack.git"
                }
             },
-            "version" : "1.0002",
+            "version" : "1.0003",
             "x_authority" : "MIYAGAWA"
          },
          "name" : "Plack",
-         "pathname" : "M/MI/MIYAGAWA/Plack-1.0002.tar.gz",
+         "pathname" : "M/MI/MIYAGAWA/Plack-1.0003.tar.gz",
          "provides" : {
             "HTTP::Message::PSGI" : {
                "file" : "HTTP/Message/PSGI.pm"
@@ -14203,7 +14203,7 @@
             },
             "Plack" : {
                "file" : "Plack.pm",
-               "version" : "1.0002"
+               "version" : "1.0003"
             },
             "Plack::App::CGIBin" : {
                "file" : "Plack/App/CGIBin.pm"
@@ -14384,14 +14384,14 @@
             },
             "Plack::Request" : {
                "file" : "Plack/Request.pm",
-               "version" : "1.0002"
+               "version" : "1.0003"
             },
             "Plack::Request::Upload" : {
                "file" : "Plack/Request/Upload.pm"
             },
             "Plack::Response" : {
                "file" : "Plack/Response.pm",
-               "version" : "1.0002"
+               "version" : "1.0003"
             },
             "Plack::Runner" : {
                "file" : "Plack/Runner.pm"
@@ -14434,7 +14434,7 @@
             }
          },
          "target" : "Plack",
-         "version" : "1.0002"
+         "version" : "1.0003"
       },
       "Plack::Middleware::ReverseProxy" : {
          "dist" : "Plack-Middleware-ReverseProxy-0.14",

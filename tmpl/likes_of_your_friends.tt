@@ -1,18 +1,24 @@
-[% WRAPPER 'include/layout.tt' %]
+<div data-role="page" id="likes_of">
 
-<section>
+<div data-role="header">
+<a href="/" data-icon="home">Home</a>
+<h1>あなたの友達で気になっている人を登録している人です。</h1>
+</div>
 
-[% IF likes %]
-<div>
-    <p>あなたの友達で気になっている人を登録している人です。</p>
-    [% FOR v IN likes %]
+<div data-role="content">
+
+[% IF likes_of_your_friends %]
+    [% FOR v IN likes_of_your_friends %]
         <p>
             <img src="http://graph.facebook.com/[% v.from_id %]/picture">[% v.from_name %]
         </p>
     [% END %]
+[% ELSE %]
+   まだ登録している人はいません。
+[% END %]
+
 </div>
-[% END %]
 
-</section>
+[% INCLUDE 'include/footer.tt' %]
 
-[% END %]
+</div>

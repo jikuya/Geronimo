@@ -1,12 +1,13 @@
 <div data-role="page" id="register_friend">
 
 <div data-role="header">
+<a href="/" data-icon="home">Home</a>
 <h1>気になる人を登録</h1>
 </div>
 
 <div data-role="content">
 
-[% IF data %]
+[% IF friends %]
     <script type="text/javascript">
     </script>
 
@@ -48,7 +49,7 @@
 <script>
 $("#register_friend").bind("pageshow", function(e) {
 
-    autocompleteData = [% data | mark_raw %]
+    autocompleteData = [% friends | mark_raw %]
 
     $("#searchField").autocomplete({
         target: $('#suggestions'),

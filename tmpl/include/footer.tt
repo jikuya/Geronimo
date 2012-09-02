@@ -1,9 +1,8 @@
 <div data-role="footer">
 <div data-role="navbar">
 <ul>
-<li><a href="#menu4" data-icon="info" data-transition="slideup">会社情報</a></li>
+<li><a href="#menu4" data-icon="info" data-transition="slideup">サービス情報</a></li>
 <li><a href="#menu5" data-icon="star" data-transition="pop">お問い合わせ</a></li>
 </ul>
 </div>
-<h4><a href="tel:00-0000-0000">00-0000-0000</a></h4>
 </div>

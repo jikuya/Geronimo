@@ -9,6 +9,8 @@ use SQL::Interp qw(sql_interp);
 any '/' => sub {
     my ($c) = @_;
     if (facebookAuth($c)) {
+        # Facebook友達情報取得
+        #   TODO:MODELに切り出す
         my $friendsData = getFacebookFriends($c);
         my $friendsDataStr = q/$.parseJSON('[/;
         while ( (my $k, my $v) = each $friendsData ) {
@@ -18,11 +20,26 @@ any '/' => sub {
         }
         chop($friendsDataStr);
         $friendsDataStr .= q/]');/;
+
+        # 気になっている人取得
+        #   TODO:MODELに切り出す
+        my $id = $c->session->get('id');
+        my $likes = $c->dbh->selectall_arrayref(
+            qq/SELECT * FROM likes WHERE from_id = $id/,
+            {Slice => {}}
+        );
+
+        # あなたの友達で気になっている人を登録している人
+        my $likes_of_your_friends = getLikesOfYourFriends($c);
+
+        # テンプレート描画
         $c->render(
             'index.tt',
             {
-                name            => $c->session->get('name'),
-                data            => $friendsDataStr,
+                name    => $c->session->get('name'),
+                friends => $friendsDataStr,
+                likes   => @$likes ? $likes : undef,
+                likes_of_your_friends => @$likes_of_your_friends ? $likes_of_your_friends : undef,
             }
         );
     } else {
