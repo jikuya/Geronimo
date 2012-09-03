@@ -22,6 +22,7 @@ if ( -d '/home/dotcloud/') {
             client_secret   => '8d683563625c6e22bde55161866a5f94',                    # アプリケーション秘密鍵
             callback_uri    => 'http://localhost:5000/',                               # FacebookアプリURL
             scope           => 'offline_access,email,read_stream,read_friendlists',   # 権限
+            display         => 'touch',                                               # 表示方法自動判別
         }
     },
     'Facebook::Graph' => {
