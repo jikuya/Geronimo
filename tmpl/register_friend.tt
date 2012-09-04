@@ -33,7 +33,7 @@
 <div data-role="content">
 
     <div id="friendDisplay"></div>
-    <form action="/register_friend_complete" method="post" id="tags">
+    <form action="/register_friend_complete" method="post" data-ajax="false">
         <input type="hidden" name="friendId"   value="" id="friendId">
         <input type="hidden" name="friendName" value="" id="friendName">
         <button type="submit" data-role="button" data-theme="e">登録する</button>
